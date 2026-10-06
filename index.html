@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>We scale mobile games · D7Tech</title>
-<meta name="description" content="D7Tech scales mobile games: strategy, creative, user acquisition and analytics, from soft launch to profitable scale.">
+<title>We scale mobile games · D7Tec</title>
+<meta name="description" content="D7Tec scales mobile games: strategy, creative, user acquisition and analytics, from soft launch to profitable scale.">
 <link rel="canonical" href="https://www.d7tec.com/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="D7Tech">
+<meta property="og:site_name" content="D7Tec">
 <meta property="og:url" content="https://www.d7tec.com/">
-<meta property="og:title" content="D7Tech · We scale mobile games">
-<meta property="og:description" content="D7Tech scales mobile games: strategy, creative, user acquisition and analytics, from soft launch to profitable scale.">
+<meta property="og:title" content="D7Tec · We scale mobile games">
+<meta property="og:description" content="D7Tec scales mobile games: strategy, creative, user acquisition and analytics, from soft launch to profitable scale.">
 <meta property="og:image" content="https://www.d7tec.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -578,7 +578,7 @@ body.dark .concept-badge{color:var(--paper)}
 <div class="env" aria-hidden="true"></div>
 
 <header class="topbar glass" id="topbar">
-  <a class="tb-brand" href="#top" aria-label="D7Tech, back to top"><span class="mark" aria-hidden="true">D<i>7</i></span><span class="tb-name" aria-hidden="true">D7Tech</span></a>
+  <a class="tb-brand" href="#top" aria-label="D7Tec, back to top"><span class="mark" aria-hidden="true">D<i>7</i></span><span class="tb-name" aria-hidden="true">D7Tec</span></a>
   <nav class="tb-nav" aria-label="Sections"><a href="#results">Results</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></nav>
   <a class="btn btn-sm tb-cta" href="#contact" data-open-form><span>Talk to a Growth Lead</span></a>
 </header>
@@ -586,7 +586,7 @@ body.dark .concept-badge{color:var(--paper)}
 <section class="hero" id="top" aria-labelledby="heroTitle">
   <div class="hero-in">
     <div class="hero-copy">
-      <p class="brand"><span class="mark" aria-hidden="true">D<i>7</i></span><span><b>D7Tech</b>, mobile growth studio</span></p>
+      <p class="brand"><span class="mark" aria-hidden="true">D<i>7</i></span><span><b>D7Tec</b>, mobile growth studio</span></p>
       <h1 id="heroTitle"><span class="h1-main">We scale mobile games.</span><span class="h1-sub">Strategy. Creative. User Acquisition. Analytics.</span></h1>
       <p class="pitch">From soft launch to profitable scale.</p>
       <div class="hero-cta"><a class="btn btn-lg" href="#contact" data-open-form><span>Start scaling →</span></a><a class="btn btn-lg btn-light" href="#results"><span>See our results →</span></a></div>
@@ -1056,7 +1056,7 @@ body.dark .concept-badge{color:var(--paper)}
 
 <footer class="foot">
   <div class="foot-in">
-    <div class="foot-brand"><span class="mark" aria-hidden="true">D<i>7</i></span><p><b>D7Tech</b>We scale mobile games. Strategy, creative, user acquisition and analytics.</p></div>
+    <div class="foot-brand"><span class="mark" aria-hidden="true">D<i>7</i></span><p><b>D7Tec</b>We scale mobile games. Strategy, creative, user acquisition and analytics.</p></div>
     <div class="foot-studio"><h3>Studio</h3><ul class="foot-list"><li>Tel Aviv</li><li>Warsaw</li></ul></div>
     <p class="foot-note">Sample data — placeholder metrics.</p>
   </div>
@@ -1064,7 +1064,7 @@ body.dark .concept-badge{color:var(--paper)}
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script type="module">
-/* ============ D7Tech · page behaviour (control room, lifecycle map, results, Scale Loop, contact) ============ */
+/* ============ D7Tec · page behaviour (control room, lifecycle map, results, Scale Loop, contact) ============ */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1322,7 +1322,7 @@ $$('[data-stage]').forEach(a => a.addEventListener('click', () => { ctStage.valu
 $$('[data-pack]').forEach(a => a.addEventListener('click', () => { packInput.value = a.dataset.pack; formPack.hidden = false; openForm(false); }));
 $('#packClear').addEventListener('click', () => { packInput.value = ''; formPack.hidden = true; ctEmail.focus(); });
 function say(text, kind) { msg.textContent = text; msg.className = 'form-msg ' + (kind || ''); }
-const W3F_KEY = '__WEB3FORMS_KEY__'; // Web3Forms access key: public by design, it only lets this form email D7Tech
+const W3F_KEY = '__WEB3FORMS_KEY__'; // Web3Forms access key: public by design, it only lets this form email D7Tec
 let sending = false;
 form.addEventListener('submit', async e => {
   e.preventDefault();
@@ -1342,8 +1342,8 @@ form.addEventListener('submit', async e => {
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         access_key: W3F_KEY,
-        subject: `New D7Tech lead · ${ctStage.value}${pack ? ' · ' + pack : ''}`,
-        from_name: 'D7Tech website',
+        subject: `New D7Tec lead · ${ctStage.value}${pack ? ' · ' + pack : ''}`,
+        from_name: 'D7Tec website',
         email: em,
         game_link: ln,
         stage: ctStage.value,
