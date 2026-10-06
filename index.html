@@ -229,12 +229,14 @@ body.dark .concept-badge{color:var(--paper)}
 .sec-head{position:relative;z-index:2;width:min(1100px,calc(100% - 32px));margin:0 auto;text-align:center}
 .sec-head h2{font:700 clamp(32px,4.3vw,60px)/1.02 var(--display);letter-spacing:-.045em;text-wrap:balance}
 .sec-head p{margin:12px auto 0;max-width:56ch;font:400 16.5px/1.55 var(--ui);color:var(--ink-2);text-wrap:balance}
-.night{position:relative;color:var(--paper);--focus:#F3F5FB}
+@media (min-width:1100px){.results .sec-head p{max-width:none}}
+.night{position:relative;color:var(--paper);--focus:#F3F5FB;background:linear-gradient(180deg,#8E7CA9 0,#4A3F7C 150px,#262C5E 380px,#1A2149 900px,#131A3B 1800px,#0C1230 100%)}
+.night::before{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:100%;height:150px;background:linear-gradient(180deg,rgba(196,206,230,0),#8E7CA9);pointer-events:none}
 .night .sec-head p{color:var(--paper-2)}
 
 /* ---------- results ---------- */
 .loot{padding:56px 0 8px}
-.deck{list-style:none;display:flex;justify-content:center;gap:24px;max-width:1180px;margin:28px auto 0;padding:12px 24px 30px}
+.deck{list-style:none;display:flex;justify-content:center;gap:24px;max-width:1180px;margin:24px auto 0;padding:10px 24px 24px}
 .tcard{position:relative;flex:0 0 304px;height:424px;perspective:1300px;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .tcard:hover,.tcard:focus-within{transform:translateY(-6px)}
 .tc-3d{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(var(--flip,0deg));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
@@ -265,7 +267,7 @@ body.dark .concept-badge{color:var(--paper)}
 .tc-foot{display:flex;justify-content:flex-end;margin-top:auto;font:600 11px/1 var(--ui);letter-spacing:.03em;color:var(--paper-2)}
 .tc-flip{position:absolute;inset:0;z-index:5;border:0;border-radius:20px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .tc-flip:focus-visible{outline:2px solid var(--focus);outline-offset:5px}
-.deck-hint{display:none;margin:-22px auto 0;text-align:center;font:500 13.5px/1.3 var(--ui);color:var(--ink-2)}
+.deck-hint{display:none;margin:-22px auto 0;text-align:center;font:500 13.5px/1.3 var(--ui);color:var(--paper-2)}
 @media (max-width:1000px){
   .deck{justify-content:flex-start;gap:16px;margin-top:22px;padding:14px max(16px,calc(50vw - 150px)) 34px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
   .deck::-webkit-scrollbar{display:none}
@@ -328,8 +330,13 @@ body.dark .concept-badge{color:var(--paper)}
   .nets{gap:12px 20px}.net{font-size:14.5px}.net--word{font-size:15px}
 }
 
+.proof-nets{width:min(1140px,calc(100% - 32px));margin:24px auto 0;padding:12px 20px 14px;border-radius:18px;background:rgba(255,255,255,.46);box-shadow:inset 0 0 0 1px rgba(255,255,255,.65),0 16px 36px -26px rgba(14,21,48,.45);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.proof-nets .proof-k{width:auto;margin:0 0 10px}
+.proof-nets .nets{width:auto;color:#2C3452}
+@media (max-width:520px){.proof-nets{margin-top:20px;padding:12px 12px 14px}}
+
 /* pricing */
-.shop{padding:64px 0 16px}
+.shop{padding:56px 0 16px}
 .price-wrap{width:min(1180px,calc(100% - 32px));margin:28px auto 0;display:grid;gap:14px}
 .pack{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px 24px;padding:22px 24px 24px;border-radius:24px;color:var(--paper);background:radial-gradient(70% 90% at 92% 0%,rgba(255,199,74,.24) 0%,rgba(255,199,74,0) 55%),radial-gradient(60% 80% at 0% 100%,rgba(242,88,62,.14),rgba(242,88,62,0) 60%),linear-gradient(165deg,rgba(38,46,92,.92),rgba(16,22,48,.94));box-shadow:inset 0 0 0 1px rgba(255,214,110,.32),0 34px 70px -36px rgba(0,0,0,.8);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);overflow:hidden}
 .pack::before{content:"";position:absolute;left:10%;right:10%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,214,110,.85),transparent)}
@@ -351,16 +358,40 @@ body.dark .concept-badge{color:var(--paper)}
 .form-pack[hidden]{display:none}
 .form-pack b{color:#FFD27A;font-weight:600}
 .form-pack button{border:0;border-radius:8px;padding:7px 10px;background:rgba(255,255,255,.08);color:var(--paper);font:600 12.5px/1 var(--ui);cursor:pointer}
-.offers{list-style:none;margin:0;padding:4px 22px;border-radius:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px;color:var(--paper);background:rgba(20,27,58,.55);border:1px solid var(--glass-d-b);box-shadow:0 14px 34px -12px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5)}
-.offer{display:grid;grid-template-columns:36px minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 0;border-top:1px solid rgba(255,255,255,.07)}
-.offer:nth-child(-n+2){border-top:0}
-.offer .ic{width:36px;height:36px}
-.offer h3{font:600 16.5px/1.15 var(--display);letter-spacing:-.03em;color:#fff}
-.offer p{margin-top:3px;font:400 13.5px/1.4 var(--ui);color:var(--paper-2)}
-.price{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
-.price b{font:700 20px/1 var(--display);letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums}
-.price span{font:500 12px/1.3 var(--ui);color:var(--paper-2)}
-.rules{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 36px;align-items:start;padding:18px 24px;border-radius:20px;background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.rules{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 36px;align-items:start;padding:18px 24px;border-radius:22px;background:rgba(20,27,58,.55);border:1px solid var(--glass-d-b);box-shadow:0 18px 40px -22px rgba(0,0,0,.65);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
+.tiers{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:14px;row-gap:0}
+.tier{position:relative;display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0;min-width:0;padding:18px 20px 20px;border-radius:22px;color:var(--paper);background:rgba(20,27,58,.55);border:1px solid var(--glass-d-b);box-shadow:0 18px 40px -22px rgba(0,0,0,.65);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .3s ease}
+.tier::before{content:"";position:absolute;left:16%;right:16%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
+@media (hover:hover) and (pointer:fine){.tier:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.17);box-shadow:0 28px 52px -24px rgba(0,0,0,.75)}}
+.tier-top{display:flex;align-items:center;gap:12px;min-width:0}
+.tier-top .ic{flex:none;width:44px;height:44px;margin:-4px -2px -4px -4px}
+.tier-top h3{font:600 18px/1.15 var(--display);letter-spacing:-.03em;color:#fff}
+.tier-for{margin-top:10px;font:400 13.5px/1.45 var(--ui);color:var(--paper-2)}
+.tier-price{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:7px;margin-top:16px}
+.tp-pre{font:500 13px/1 var(--ui);color:var(--paper-2)}
+.tier-price b{font:700 40px/1 var(--display);letter-spacing:-.05em;color:#fff;font-variant-numeric:tabular-nums}
+.tp-unit{flex-basis:100%;margin-top:7px;font:500 13px/1.3 var(--ui);color:var(--paper-2)}
+.tier-list{list-style:none;margin:14px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.09);display:grid;align-content:start;gap:9px}
+.tier-list li{display:flex;align-items:flex-start;gap:9px;font:500 14px/1.4 var(--ui);color:var(--paper)}
+.tier-list .chk{width:18px;height:18px;margin-top:1px}
+.tier-list .chk svg{width:15px;height:15px}
+.tier-list .chk img{width:18px;height:18px}
+.tier-btn{align-self:end;width:100%;margin-top:18px;padding:0 12px;font-size:15.5px;white-space:nowrap}
+.btn-ghost{--bt:#fff;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 10px 22px -14px rgba(0,0,0,.6)}
+.btn-ghost::before{display:none}
+.btn-ghost:hover{filter:none;background:rgba(255,255,255,.12)}
+.tiers-hint{display:none;margin-top:-6px;text-align:center;font:500 13.5px/1.3 var(--ui);color:var(--paper-2)}
+@media (max-width:1000px) and (min-width:641px){
+  .tiers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tier:nth-child(n+3){margin-top:14px}
+}
+@media (max-width:640px){
+  .tiers{display:flex;gap:12px;margin:0 -16px;padding:4px 16px 14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .tiers::-webkit-scrollbar{display:none}
+  .tier{flex:0 0 min(78%,300px);grid-template-rows:auto auto auto 1fr auto;padding:18px;scroll-snap-align:start}
+  .tier-price b{font-size:36px}
+  .tiers-hint{display:block}
+}
 .rules h3{font:600 16px/1.4 var(--display);letter-spacing:-.03em;color:#fff;white-space:nowrap}
 .rules ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
 .rules li{display:flex;gap:9px;align-items:flex-start;font:500 14px/1.45 var(--ui);color:var(--paper)}
@@ -368,8 +399,6 @@ body.dark .concept-badge{color:var(--paper)}
 @media (max-width:900px){
   .pack{grid-template-columns:1fr}
   .pack-buy{justify-self:stretch;justify-content:space-between;flex-wrap:wrap}
-  .offers{grid-template-columns:1fr}
-  .offer:nth-child(2){border-top:1px solid rgba(255,255,255,.07)}
   .rules{grid-template-columns:1fr}
 }
 @media (max-width:620px){
@@ -382,17 +411,13 @@ body.dark .concept-badge{color:var(--paper)}
   .pack-items .ic{width:28px;height:28px}
   .pack-items span{font-size:12.5px;line-height:1.4}
   .pack-buy .btn{width:100%}
-  .offers{padding:2px 16px}
-  .offer{grid-template-columns:32px minmax(0,1fr);row-gap:6px;padding:13px 0}
-  .offer .ic{width:32px;height:32px;align-self:start}
-  .offer .price{grid-column:2}
   .rules{padding:16px}
   .rules ul{grid-template-columns:1fr;gap:7px}
   .rules li{font-size:13.5px}
 }
 
 /* how we work */
-.how{padding:64px 0 24px}
+.how{padding:56px 0 16px}
 .how-in{width:min(1240px,calc(100% - 32px));margin:28px auto 0;display:grid;gap:22px}
 .how-sub{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px}
 .how-h{font:700 clamp(21px,2.1vw,27px)/1.12 var(--display);letter-spacing:-.04em;color:#fff}
@@ -457,7 +482,7 @@ body.dark .concept-badge{color:var(--paper)}
 }
 
 /* pillars, tighter */
-.pillars{padding:56px 0 16px}
+.pillars{padding:52px 0 12px}
 .pillar-grid{margin-top:28px}
 .pillar{grid-template-columns:60px 1fr;column-gap:14px;padding:18px 0}
 .pillar .ic{width:60px;height:60px;margin:-6px 0 0 -4px}
@@ -466,7 +491,7 @@ body.dark .concept-badge{color:var(--paper)}
 @media (max-width:620px){.pillar-grid{margin-top:20px}.pillar{grid-template-columns:48px 1fr;column-gap:12px;padding:14px 0}.pillar .ic{width:48px;height:48px;margin:-4px 0 0 -2px}.pillar h3{font-size:16.5px}.pillar p{font-size:14px}}
 
 /* why D7Tec */
-.why{padding:56px 0 24px}
+.why{padding:56px 0 16px}
 .why-grid{width:min(1240px,calc(100% - 32px));margin:28px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .why-col{display:flex;flex-direction:column;gap:12px;min-width:0;padding:20px 22px 22px;border-radius:22px;color:var(--paper);background:var(--glass-d);border:1px solid var(--glass-d-b);box-shadow:0 18px 40px -18px rgba(0,0,0,.6);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
 .why-k{display:flex;align-items:center;gap:10px;font:600 13px/1 var(--ui);letter-spacing:.03em;color:var(--paper-2)}
@@ -489,7 +514,7 @@ body.dark .concept-badge{color:var(--paper)}
 .ladder li b{font:700 13px/1 var(--display);letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
 .why-foot{margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);font:600 15px/1.35 var(--ui);color:#fff}
 .why-sub{font:500 14px/1.4 var(--ui);color:var(--paper-2)}
-.roles{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.roles{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .roles li{display:flex;align-items:center;gap:10px;font:600 14.5px/1.2 var(--ui);color:#fff}
 .roles .ic{flex:none;width:30px;height:30px}
 .role-off{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:12px;border-top:1px dashed rgba(255,255,255,.16);font:500 14px/1.3 var(--ui);color:var(--paper-2)}
@@ -501,6 +526,7 @@ body.dark .concept-badge{color:var(--paper)}
 
 /* top bar with four links */
 @media (max-width:960px){.tb-nav a{padding:10px 8px;font-size:14px}}
+@media (max-width:880px){.topbar .tb-cta .lbl-full{display:none}.topbar .tb-cta .lbl-short{display:inline}}
 @media (max-width:720px){.tb-nav{display:none}}
 
 /* ---------- final CTA ---------- */
@@ -526,7 +552,7 @@ body.dark .concept-badge{color:var(--paper)}
 @media (max-width:640px){.contact{padding:110px 0 130px}.ct-fields{grid-template-columns:1fr}.ct-form{padding:16px}}
 
 /* ---------- footer ---------- */
-.foot{padding:56px 0 40px;color:var(--paper-2);--focus:#F3F5FB;border-top:1px solid rgba(255,255,255,.06)}
+.foot{padding:56px 0 40px;color:var(--paper-2);--focus:#F3F5FB;background:#0C1230;border-top:1px solid rgba(255,255,255,.06)}
 .foot-in{width:min(1180px,calc(100% - 32px));margin:0 auto;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:28px 40px;align-items:start}
 .foot-brand{display:flex;gap:14px;align-items:flex-start}
 .tb-cta .lbl-short{display:none}
@@ -576,7 +602,7 @@ body.dark .concept-badge{color:var(--paper)}
 
 <header class="topbar glass" id="topbar">
   <a class="tb-brand" href="#top" aria-label="D7Tec, back to top"><svg class="tb-logo" aria-hidden="true" focusable="false"><use href="#d7-wordmark"/></svg></a>
-  <nav class="tb-nav" aria-label="Sections"><a href="#results">Results</a><a href="#pricing">Pricing</a><a href="#how">How we work</a><a href="#contact">Contact</a></nav>
+  <nav class="tb-nav" aria-label="Sections"><a href="#why">Why D7Tec</a><a href="#how">How we work</a><a href="#results">Results</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></nav>
   <a class="btn btn-sm tb-cta" href="#contact" data-open-form aria-label="Talk to a Growth Lead"><span class="lbl-full">Talk to a Growth Lead</span><span class="lbl-short">Talk to us</span></a>
 </header>
 <main>
@@ -654,104 +680,36 @@ body.dark .concept-badge{color:var(--paper)}
   </div>
 </section>
 
-<section class="loot results" id="results" aria-labelledby="resTitle">
-  <header class="sec-head">
-    <h2 class="display" id="resTitle">Results</h2>
-    <p>Three games. Baseline, result and window on every card. Flip one to see how it was measured.</p>
-  </header>
-  <ul class="deck" id="deck">
-    <li class="tcard">
-      <article class="tc-3d" aria-labelledby="tc1">
-        <div class="face front">
-          <div class="tc-top"><h3 id="tc1">Wave Master</h3><span class="tc-meth" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 6.2A5.3 5.3 0 0 0 3.4 4.6M3 9.8a5.3 5.3 0 0 0 9.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.2 2.4v2.6h2.6M12.8 13.6V11h-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Method</span></div>
-          <p class="tc-genre"><span>Casual</span><span>14 weeks</span></p>
-          <dl class="tc-rows"><div><dt>Monthly spend</dt><dd>$40K → $280K<small>/month</small></dd></div><div><dt>D30 ROAS</dt><dd>38% → 67%</dd></div><div><dt>CPI</dt><dd>−$0.74</dd></div><div><dt>Revenue</dt><dd>+214%</dd></div></dl>
-        </div>
-        <div class="face back">
-          <p class="tc-back-title">Wave Master <span>How it was measured</span></p>
-          <dl class="tc-fields"><div><dt>Genre</dt><dd>Casual</dd></div><div><dt>Window</dt><dd>14 weeks, D30 cohorts</dd></div><div><dt>Baseline</dt><dd>Monthly average before we started</dd></div><div><dt>Measured with</dt><dd>MMP + SKAN + holdouts</dd></div></dl>
-          <p class="tc-foot"><span>Tap to flip back</span></p>
-        </div>
-      </article>
-      <button class="tc-flip" type="button" aria-pressed="false"><span class="sr-only">Flip the Wave Master card to see how it was measured</span></button>
-      <a class="tc-how" href="#">See exactly how we did it →</a>
-    </li>
-    <li class="tcard">
-      <article class="tc-3d" aria-labelledby="tc2">
-        <div class="face front">
-          <div class="tc-top"><h3 id="tc2">Vikings</h3><span class="tc-meth" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 6.2A5.3 5.3 0 0 0 3.4 4.6M3 9.8a5.3 5.3 0 0 0 9.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.2 2.4v2.6h2.6M12.8 13.6V11h-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Method</span></div>
-          <p class="tc-genre"><span>Strategy</span><span>16 weeks</span></p>
-          <dl class="tc-rows"><div><dt>Monthly spend</dt><dd>$90K → $520K<small>/month</small></dd></div><div><dt>D30 ROAS</dt><dd>14% → 26%</dd></div><div><dt>CPI</dt><dd>−$1.90</dd></div><div><dt>Revenue</dt><dd>+171%</dd></div></dl>
-        </div>
-        <div class="face back">
-          <p class="tc-back-title">Vikings <span>How it was measured</span></p>
-          <dl class="tc-fields"><div><dt>Genre</dt><dd>Strategy</dd></div><div><dt>Window</dt><dd>16 weeks, D30 cohorts</dd></div><div><dt>Baseline</dt><dd>Monthly average before we started</dd></div><div><dt>Measured with</dt><dd>MMP + SKAN + holdouts</dd></div></dl>
-          <p class="tc-foot"><span>Tap to flip back</span></p>
-        </div>
-      </article>
-      <button class="tc-flip" type="button" aria-pressed="false"><span class="sr-only">Flip the Vikings card to see how it was measured</span></button>
-      <a class="tc-how" href="#">See exactly how we did it →</a>
-    </li>
-    <li class="tcard">
-      <article class="tc-3d" aria-labelledby="tc3">
-        <div class="face front">
-          <div class="tc-top"><h3 id="tc3">Throne</h3><span class="tc-meth" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 6.2A5.3 5.3 0 0 0 3.4 4.6M3 9.8a5.3 5.3 0 0 0 9.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.2 2.4v2.6h2.6M12.8 13.6V11h-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Method</span></div>
-          <p class="tc-genre"><span>Strategy</span><span>10 weeks</span></p>
-          <dl class="tc-rows"><div><dt>Monthly spend</dt><dd>$60K → $410K<small>/month</small></dd></div><div><dt>D30 ROAS</dt><dd>19% → 31%</dd></div><div><dt>CPI</dt><dd>−$0.87</dd></div><div><dt>Revenue</dt><dd>+163%</dd></div></dl>
-        </div>
-        <div class="face back">
-          <p class="tc-back-title">Throne <span>How it was measured</span></p>
-          <dl class="tc-fields"><div><dt>Genre</dt><dd>Strategy</dd></div><div><dt>Window</dt><dd>10 weeks, D30 cohorts</dd></div><div><dt>Baseline</dt><dd>Monthly average before we started</dd></div><div><dt>Measured with</dt><dd>MMP + SKAN + holdouts</dd></div></dl>
-          <p class="tc-foot"><span>Tap to flip back</span></p>
-        </div>
-      </article>
-      <button class="tc-flip" type="button" aria-pressed="false"><span class="sr-only">Flip the Throne card to see how it was measured</span></button>
-      <a class="tc-how" href="#">See exactly how we did it →</a>
-    </li>
-  </ul>
-  <p class="deck-hint">Swipe for more results</p>
-</section>
-
 <div class="night">
-<section class="shop" id="pricing" aria-labelledby="pricingTitle">
+<section class="why" id="why" aria-labelledby="whyTitle">
   <header class="sec-head">
-    <h2 class="display" id="pricingTitle">Pricing</h2>
-    <p>Prices in public. Rare in this niche, which is the point.</p>
+    <h2 class="display" id="whyTitle">Why D7Tec</h2>
   </header>
-  <div class="price-wrap">
-    <article class="pack" aria-labelledby="packTitle">
-      <div class="pack-top">
-        <img class="ic pack-glyph" src="assets/icons/layers.png" width="62" height="62" alt="" loading="lazy">
-        <div class="pack-name"><span class="pack-tag">Best for launches</span><h3 id="packTitle">Startup pack</h3></div>
-      </div>
-      <div class="pack-buy">
-        <p class="pack-price"><span>From</span> <b>$12K</b> <span>per month</span></p>
-        <a class="btn btn-gold btn-lg" href="#contact" data-pack="Startup pack"><span>Get the startup pack</span></a>
-      </div>
-      <ul class="pack-items" aria-label="Bundle contents">
-        <li><img class="ic" src="assets/icons/key.png" width="32" height="32" alt="" loading="lazy"><div><b>Account setup</b><span>Ad accounts and tracking set up from day one. You own them.</span></div></li>
-        <li><img class="ic" src="assets/icons/clapper.png" width="32" height="32" alt="" loading="lazy"><div><b>Creative production</b><span>The launch set of ad creatives.</span></div></li>
-        <li><img class="ic" src="assets/icons/target.png" width="32" height="32" alt="" loading="lazy"><div><b>UA</b><span>Setup, infrastructure and ongoing management.</span></div></li>
-        <li><img class="ic" src="assets/icons/storefront.png" width="32" height="32" alt="" loading="lazy"><div><b>ASO</b><span>Setup and infrastructure for the store listing.</span></div></li>
-        <li><img class="ic" src="assets/icons/chat-heart.png" width="32" height="32" alt="" loading="lazy"><div><b>SMM</b><span>Social media set up for launch.</span></div></li>
-      </ul>
+  <div class="why-grid">
+    <article class="why-col" aria-labelledby="whyCreative">
+      <p class="why-k"><img class="ic" src="assets/icons/clapper.png" width="40" height="40" alt="" loading="lazy">Creative</p>
+      <h3 id="whyCreative">Creatives are the new targeting.</h3>
+      <dl class="why-stats">
+        <div><dt>Creatives tested this month</dt><dd>142</dd></div>
+        <div class="w"><dt>Winners</dt><dd>11</dd></div>
+        <div><dt>Win rate</dt><dd>7.7%</dd></div>
+      </dl>
+      <div class="why-tiles" role="img" aria-label="One tile per creative tested this month: 142 tiles, 11 gold winners that beat the control."><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i class="w"></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </article>
-    <ul class="offers" aria-label="Other offers">
-      <li class="offer"><img class="ic" src="assets/icons/bolt.png" width="36" height="36" alt="" loading="lazy"><div><h3>Creative sprint</h3><p>30+ concepts, 120+ variants. Playables quoted per build.</p></div><p class="price"><span>from</span><b>$14K</b><span>per month</span></p></li>
-      <li class="offer"><img class="ic" src="assets/icons/storefront.png" width="36" height="36" alt="" loading="lazy"><div><h3>ASO &amp; CPP program</h3><p>Keywords, screenshots, CPPs, product page tests, 30+ locales.</p></div><p class="price"><span>from</span><b>$6K</b><span>per month</span></p></li>
-      <li class="offer"><img class="ic" src="assets/icons/target.png" width="36" height="36" alt="" loading="lazy"><div><h3>Managed UA</h3><p>$50K a month media minimum. You own the accounts.</p></div><p class="price"><b>10%</b><span>of spend</span></p></li>
-      <li class="offer"><img class="ic" src="assets/icons/funnel.png" width="36" height="36" alt="" loading="lazy"><div><h3>Full funnel</h3><p>UA, creative, ASO and measurement on one P&amp;L.</p></div><p class="price"><b>Custom</b><span>scoped together</span></p></li>
-    </ul>
-    <aside class="rules" aria-labelledby="rulesTitle">
-      <h3 id="rulesTitle">House rules</h3>
-      <ul>
-        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>You own the ad accounts, the MMP and the raw data. Always.</span></li>
-        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>Our fee is invoiced separately. We never mark up media.</span></li>
-        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>No ROAS promises before we've audited your data.</span></li>
-        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>The seniors who pitch you are the people who run your account.</span></li>
-        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>Every case study shows the baseline, the time window and how it was measured.</span></li>
-      </ul>
-    </aside>
+    <article class="why-col" aria-labelledby="whyData">
+      <p class="why-k"><img class="ic" src="assets/icons/chart.png" width="40" height="40" alt="" loading="lazy">Data</p>
+      <h3 id="whyData">Every dollar. Every cohort. Every decision.</h3>
+      <p class="why-cap" id="ladderCap">Cohort ROAS by day since install, sample account</p>
+      <ol class="ladder" aria-labelledby="ladderCap"><li style="--v:6.1"><span>D0</span><i></i><b>6.1%</b></li><li style="--v:11.4"><span>D1</span><i></i><b>11.4%</b></li><li style="--v:19.6"><span>D3</span><i></i><b>19.6%</b></li><li style="--v:31.8"><span>D7</span><i></i><b>31.8%</b></li><li style="--v:74.2"><span>D30</span><i></i><b>74.2%</b></li></ol>
+      <p class="why-foot">No black-box reporting.</p>
+    </article>
+    <article class="why-col" aria-labelledby="whySquad">
+      <p class="why-k"><img class="ic" src="assets/icons/joystick.png" width="40" height="40" alt="" loading="lazy">Squad</p>
+      <h3 id="whySquad">We don't work like an agency.</h3>
+      <p class="why-sub">You get a squad:</p>
+      <ul class="roles"><li><img class="ic" src="assets/icons/compass.png" width="30" height="30" alt="" loading="lazy">Growth Lead</li><li><img class="ic" src="assets/icons/target.png" width="30" height="30" alt="" loading="lazy">UA Manager</li><li><img class="ic" src="assets/icons/bulb.png" width="30" height="30" alt="" loading="lazy">Creative Strategist</li><li><img class="ic" src="assets/icons/palette.png" width="30" height="30" alt="" loading="lazy">Creative Team</li><li><img class="ic" src="assets/icons/chart.png" width="30" height="30" alt="" loading="lazy">Data Analyst</li></ul>
+      <p class="role-off"><img class="ic" src="assets/icons/briefcase.png" width="30" height="30" alt="" loading="lazy"><span>Instead of <s>an account manager</s></span></p>
+    </article>
   </div>
 </section>
 
@@ -823,35 +781,128 @@ body.dark .concept-badge{color:var(--paper)}
   </ul>
 </section>
 
-<section class="why" id="why" aria-labelledby="whyTitle">
+<section class="loot results" id="results" aria-labelledby="resTitle">
   <header class="sec-head">
-    <h2 class="display" id="whyTitle">Why D7Tec</h2>
+    <h2 class="display" id="resTitle">Results</h2>
+    <p>Three games. Baseline, result and window on every card. Flip one to see how it was measured.</p>
   </header>
-  <div class="why-grid">
-    <article class="why-col" aria-labelledby="whyCreative">
-      <p class="why-k"><img class="ic" src="assets/icons/clapper.png" width="40" height="40" alt="" loading="lazy">Creative</p>
-      <h3 id="whyCreative">Creatives are the new targeting.</h3>
-      <dl class="why-stats">
-        <div><dt>Creatives tested this month</dt><dd>142</dd></div>
-        <div class="w"><dt>Winners</dt><dd>11</dd></div>
-        <div><dt>Win rate</dt><dd>7.7%</dd></div>
-      </dl>
-      <div class="why-tiles" role="img" aria-label="One tile per creative tested this month: 142 tiles, 11 gold winners that beat the control."><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="w"></i><i class="w"></i><i></i><i></i><i class="w"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <ul class="deck" id="deck">
+    <li class="tcard">
+      <article class="tc-3d" aria-labelledby="tc1">
+        <div class="face front">
+          <div class="tc-top"><h3 id="tc1">Wave Master</h3><span class="tc-meth" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 6.2A5.3 5.3 0 0 0 3.4 4.6M3 9.8a5.3 5.3 0 0 0 9.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.2 2.4v2.6h2.6M12.8 13.6V11h-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Method</span></div>
+          <p class="tc-genre"><span>Casual</span><span>14 weeks</span></p>
+          <dl class="tc-rows"><div><dt>Monthly spend</dt><dd>$40K → $280K<small>/month</small></dd></div><div><dt>D30 ROAS</dt><dd>38% → 67%</dd></div><div><dt>CPI</dt><dd>−$0.74</dd></div><div><dt>Revenue</dt><dd>+214%</dd></div></dl>
+        </div>
+        <div class="face back">
+          <p class="tc-back-title">Wave Master <span>How it was measured</span></p>
+          <dl class="tc-fields"><div><dt>Genre</dt><dd>Casual</dd></div><div><dt>Window</dt><dd>14 weeks, D30 cohorts</dd></div><div><dt>Baseline</dt><dd>Monthly average before we started</dd></div><div><dt>Measured with</dt><dd>MMP + SKAN + holdouts</dd></div></dl>
+          <p class="tc-foot"><span>Tap to flip back</span></p>
+        </div>
+      </article>
+      <button class="tc-flip" type="button" aria-pressed="false"><span class="sr-only">Flip the Wave Master card to see how it was measured</span></button>
+      <a class="tc-how" href="#">See exactly how we did it →</a>
+    </li>
+    <li class="tcard">
+      <article class="tc-3d" aria-labelledby="tc2">
+        <div class="face front">
+          <div class="tc-top"><h3 id="tc2">Vikings</h3><span class="tc-meth" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 6.2A5.3 5.3 0 0 0 3.4 4.6M3 9.8a5.3 5.3 0 0 0 9.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.2 2.4v2.6h2.6M12.8 13.6V11h-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Method</span></div>
+          <p class="tc-genre"><span>Strategy</span><span>16 weeks</span></p>
+          <dl class="tc-rows"><div><dt>Monthly spend</dt><dd>$90K → $520K<small>/month</small></dd></div><div><dt>D30 ROAS</dt><dd>14% → 26%</dd></div><div><dt>CPI</dt><dd>−$1.90</dd></div><div><dt>Revenue</dt><dd>+171%</dd></div></dl>
+        </div>
+        <div class="face back">
+          <p class="tc-back-title">Vikings <span>How it was measured</span></p>
+          <dl class="tc-fields"><div><dt>Genre</dt><dd>Strategy</dd></div><div><dt>Window</dt><dd>16 weeks, D30 cohorts</dd></div><div><dt>Baseline</dt><dd>Monthly average before we started</dd></div><div><dt>Measured with</dt><dd>MMP + SKAN + holdouts</dd></div></dl>
+          <p class="tc-foot"><span>Tap to flip back</span></p>
+        </div>
+      </article>
+      <button class="tc-flip" type="button" aria-pressed="false"><span class="sr-only">Flip the Vikings card to see how it was measured</span></button>
+      <a class="tc-how" href="#">See exactly how we did it →</a>
+    </li>
+    <li class="tcard">
+      <article class="tc-3d" aria-labelledby="tc3">
+        <div class="face front">
+          <div class="tc-top"><h3 id="tc3">Throne</h3><span class="tc-meth" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 6.2A5.3 5.3 0 0 0 3.4 4.6M3 9.8a5.3 5.3 0 0 0 9.6 1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.2 2.4v2.6h2.6M12.8 13.6V11h-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Method</span></div>
+          <p class="tc-genre"><span>Strategy</span><span>10 weeks</span></p>
+          <dl class="tc-rows"><div><dt>Monthly spend</dt><dd>$60K → $410K<small>/month</small></dd></div><div><dt>D30 ROAS</dt><dd>19% → 31%</dd></div><div><dt>CPI</dt><dd>−$0.87</dd></div><div><dt>Revenue</dt><dd>+163%</dd></div></dl>
+        </div>
+        <div class="face back">
+          <p class="tc-back-title">Throne <span>How it was measured</span></p>
+          <dl class="tc-fields"><div><dt>Genre</dt><dd>Strategy</dd></div><div><dt>Window</dt><dd>10 weeks, D30 cohorts</dd></div><div><dt>Baseline</dt><dd>Monthly average before we started</dd></div><div><dt>Measured with</dt><dd>MMP + SKAN + holdouts</dd></div></dl>
+          <p class="tc-foot"><span>Tap to flip back</span></p>
+        </div>
+      </article>
+      <button class="tc-flip" type="button" aria-pressed="false"><span class="sr-only">Flip the Throne card to see how it was measured</span></button>
+      <a class="tc-how" href="#">See exactly how we did it →</a>
+    </li>
+  </ul>
+  <p class="deck-hint">Swipe for more results</p>
+</section>
+
+<section class="shop" id="pricing" aria-labelledby="pricingTitle">
+  <header class="sec-head">
+    <h2 class="display" id="pricingTitle">Pricing</h2>
+    <p>Prices in public. Rare in this niche, which is the point.</p>
+  </header>
+  <div class="price-wrap">
+    <article class="pack" aria-labelledby="packTitle">
+      <div class="pack-top">
+        <img class="ic pack-glyph" src="assets/icons/layers.png" width="62" height="62" alt="" loading="lazy">
+        <div class="pack-name"><span class="pack-tag">Best for launches</span><h3 id="packTitle">Startup pack</h3></div>
+      </div>
+      <div class="pack-buy">
+        <p class="pack-price"><span>From</span> <b>$12K</b> <span>per month</span></p>
+        <a class="btn btn-gold btn-lg" href="#contact" data-pack="Startup pack"><span>Get the startup pack</span></a>
+      </div>
+      <ul class="pack-items" aria-label="Bundle contents">
+        <li><img class="ic" src="assets/icons/key.png" width="32" height="32" alt="" loading="lazy"><div><b>Account setup</b><span>Ad accounts and tracking set up from day one. You own them.</span></div></li>
+        <li><img class="ic" src="assets/icons/clapper.png" width="32" height="32" alt="" loading="lazy"><div><b>Creative production</b><span>The launch set of ad creatives.</span></div></li>
+        <li><img class="ic" src="assets/icons/target.png" width="32" height="32" alt="" loading="lazy"><div><b>UA</b><span>Setup, infrastructure and ongoing management.</span></div></li>
+        <li><img class="ic" src="assets/icons/storefront.png" width="32" height="32" alt="" loading="lazy"><div><b>ASO</b><span>Setup and infrastructure for the store listing.</span></div></li>
+        <li><img class="ic" src="assets/icons/chat-heart.png" width="32" height="32" alt="" loading="lazy"><div><b>SMM</b><span>Social media set up for launch.</span></div></li>
+      </ul>
     </article>
-    <article class="why-col" aria-labelledby="whyData">
-      <p class="why-k"><img class="ic" src="assets/icons/chart.png" width="40" height="40" alt="" loading="lazy">Data</p>
-      <h3 id="whyData">Every dollar. Every cohort. Every decision.</h3>
-      <p class="why-cap" id="ladderCap">Cohort ROAS by day since install, sample account</p>
-      <ol class="ladder" aria-labelledby="ladderCap"><li style="--v:6.1"><span>D0</span><i></i><b>6.1%</b></li><li style="--v:11.4"><span>D1</span><i></i><b>11.4%</b></li><li style="--v:19.6"><span>D3</span><i></i><b>19.6%</b></li><li style="--v:31.8"><span>D7</span><i></i><b>31.8%</b></li><li style="--v:74.2"><span>D30</span><i></i><b>74.2%</b></li></ol>
-      <p class="why-foot">No black-box reporting.</p>
-    </article>
-    <article class="why-col" aria-labelledby="whySquad">
-      <p class="why-k"><img class="ic" src="assets/icons/joystick.png" width="40" height="40" alt="" loading="lazy">Squad</p>
-      <h3 id="whySquad">We don't work like an agency.</h3>
-      <p class="why-sub">You get a squad:</p>
-      <ul class="roles"><li><img class="ic" src="assets/icons/compass.png" width="30" height="30" alt="" loading="lazy">Growth Lead</li><li><img class="ic" src="assets/icons/target.png" width="30" height="30" alt="" loading="lazy">UA Manager</li><li><img class="ic" src="assets/icons/bulb.png" width="30" height="30" alt="" loading="lazy">Creative Strategist</li><li><img class="ic" src="assets/icons/palette.png" width="30" height="30" alt="" loading="lazy">Creative Team</li><li><img class="ic" src="assets/icons/chart.png" width="30" height="30" alt="" loading="lazy">Data Analyst</li></ul>
-      <p class="role-off"><img class="ic" src="assets/icons/briefcase.png" width="30" height="30" alt="" loading="lazy"><span>Instead of <s>an account manager</s></span></p>
-    </article>
+    <ul class="tiers" aria-label="More packages">
+      <li class="tier">
+        <div class="tier-top"><img class="ic" src="assets/icons/bolt.png" width="44" height="44" alt="" loading="lazy"><h3>Creative sprint</h3></div>
+        <p class="tier-for">For teams that run media in-house and need winners.</p>
+        <p class="tier-price"><span class="tp-pre">from</span> <b>$14K</b><span class="tp-unit">per month</span></p>
+        <ul class="tier-list"><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>30+ concepts a month</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>120+ variants</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>Playables quoted per build</span></li></ul>
+        <a class="btn btn-ghost tier-btn" href="#contact" data-pack="Creative sprint"><span>Start a sprint</span></a>
+      </li>
+      <li class="tier">
+        <div class="tier-top"><img class="ic" src="assets/icons/storefront.png" width="44" height="44" alt="" loading="lazy"><h3>ASO &amp; CPP program</h3></div>
+        <p class="tier-for">For store conversion.</p>
+        <p class="tier-price"><span class="tp-pre">from</span> <b>$6K</b><span class="tp-unit">per month</span></p>
+        <ul class="tier-list"><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>Keywords &amp; metadata</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>Screenshots, CPPs and product page tests</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>30+ locales</span></li></ul>
+        <a class="btn btn-ghost tier-btn" href="#contact" data-pack="ASO &amp; CPP program"><span>Grow the store page</span></a>
+      </li>
+      <li class="tier">
+        <div class="tier-top"><img class="ic" src="assets/icons/target.png" width="44" height="44" alt="" loading="lazy"><h3>Managed UA</h3></div>
+        <p class="tier-for">For teams ready to scale paid.</p>
+        <p class="tier-price"><b>10%</b><span class="tp-unit">of media spend</span></p>
+        <ul class="tier-list"><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>$50K a month media minimum</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>You own the ad accounts</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>Fee invoiced separately</span></li></ul>
+        <a class="btn btn-ghost tier-btn" href="#contact" data-pack="Managed UA"><span>Scale with us</span></a>
+      </li>
+      <li class="tier">
+        <div class="tier-top"><img class="ic" src="assets/icons/funnel.png" width="44" height="44" alt="" loading="lazy"><h3>Full funnel</h3></div>
+        <p class="tier-for">For one partner on one P&amp;L.</p>
+        <p class="tier-price"><b>Custom</b><span class="tp-unit">scoped together</span></p>
+        <ul class="tier-list"><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>UA, creative, ASO and measurement</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>One P&amp;L, one squad</span></li><li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="18" height="18" alt="" loading="lazy"></span><span>Senior team on the account</span></li></ul>
+        <a class="btn btn-ghost tier-btn" href="#contact" data-pack="Full funnel"><span>Scope it together</span></a>
+      </li>
+    </ul>
+    <p class="tiers-hint">Swipe for all four packages</p>
+    <aside class="rules" aria-labelledby="rulesTitle">
+      <h3 id="rulesTitle">House rules</h3>
+      <ul>
+        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>You own the ad accounts, the MMP and the raw data. Always.</span></li>
+        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>Our fee is invoiced separately. We never mark up media.</span></li>
+        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>No ROAS promises before we've audited your data.</span></li>
+        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>The seniors who pitch you are the people who run your account.</span></li>
+        <li><span class="ic-stack chk"><svg class="ic-fallback" viewBox="0 0 20 20" aria-hidden="true"><use href="#i-check"/></svg><img class="ic" src="assets/icons/check.png" width="22" height="22" alt="" loading="lazy"></span><span>Every case study shows the baseline, the time window and how it was measured.</span></li>
+      </ul>
+    </aside>
   </div>
 </section>
 
@@ -921,17 +972,18 @@ const ENV = [ // e, top, mid, bottom, glow
 const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
 const mix = (a, b, t) => { const A = hex(a), B = hex(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * t).toString(16).padStart(2, '0')).join(''); };
 let envRaf = 0, lastDark = null;
-const duskEl = document.getElementById('pricing');   // daylight down to Results; dusk to night as Pricing comes up
+const nightEl = $('.night');   // the night zone (Why D7Tec → end) carries its own dusk-to-night background
 function updateEnv() {
   envRaf = 0;
-  const r = duskEl.getBoundingClientRect();
-  const e = Math.min(1, Math.max(0, (innerHeight * 1.12 - r.top) / (innerHeight * .62)));
+  const r = nightEl.getBoundingClientRect();
+  // the daylight sky warms a little on the way down to the night zone
+  const e = Math.min(1, Math.max(0, (innerHeight * 1.6 - r.top) / (innerHeight * 1.6))) * .3;
   let k = 0; while (k < ENV.length - 2 && e > ENV[k + 1][0]) k++;
   const a = ENV[k], b = ENV[k + 1], t = Math.min(1, Math.max(0, (e - a[0]) / (b[0] - a[0])));
   const vals = [1, 2, 3, 4].map(i => mix(a[i], b[i], t));
   const st = document.documentElement.style;
   st.setProperty('--env-top', vals[0]); st.setProperty('--env-mid', vals[1]); st.setProperty('--env-bot', vals[2]); st.setProperty('--env-glow', vals[3]);
-  const dark = e > .58;
+  const dark = r.top < 72;   // the night zone is under the top bar
   if (dark !== lastDark) { document.body.classList.toggle('dark', dark); lastDark = dark; const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = dark ? '#10173A' : '#F1E4D6'; }
 }
 const askEnv = () => { if (!envRaf) envRaf = requestAnimationFrame(updateEnv); };
@@ -1043,7 +1095,8 @@ function openForm(focus) {
 ctOpen.addEventListener('click', () => openForm(true));
 $$('[data-open-form]').forEach(a => a.addEventListener('click', () => openForm(false)));
 $$('[data-stage]').forEach(a => a.addEventListener('click', () => { ctStage.value = a.dataset.stage; openForm(false); }));
-$$('[data-pack]').forEach(a => a.addEventListener('click', () => { packInput.value = a.dataset.pack; formPack.hidden = false; openForm(false); }));
+const packName = formPack.querySelector('b');
+$$('[data-pack]').forEach(a => a.addEventListener('click', () => { packInput.value = a.dataset.pack; if (packName) packName.textContent = a.dataset.pack; formPack.hidden = false; openForm(false); }));
 $('#packClear').addEventListener('click', () => { packInput.value = ''; formPack.hidden = true; ctEmail.focus(); });
 function say(text, kind) { msg.textContent = text; msg.className = 'form-msg ' + (kind || ''); }
 const W3F_KEY = '__WEB3FORMS_KEY__'; // Web3Forms access key: public by design, it only lets this form email D7Tec
